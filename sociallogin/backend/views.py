@@ -17,8 +17,7 @@ def home(request):
 
 def phone_number_form(request, **kwargs):
     if request.method == 'POST':
-        print(' ~~~~~~~~')
-        print(kwargs.get('backend'))
+
         form = PhoneNumberForm(request.POST)
         if form.is_valid():
             request.session['phone_number'] = form.cleaned_data['phone_number']
@@ -34,18 +33,16 @@ def get_all_users(request):
     return render(request, 'all_users.html', {'users': users})
 
 def get_user_details(request, **kwargs):
-    print(request.user)
-    print(' ------ from the view ----- ')
-    print(kwargs)
+
     userid = kwargs.get('id')
     users = CustomUser.objects.filter(id=userid)
-    print(users)
+
     return render(request, 'user_details.html', {'user': users[0] if len(users) > 0 else None})
 
 
 def search_user(request):
     phone_number = request.GET.get('q')
-    print(phone_number)
+
     users = CustomUser.objects.filter(phonenumber=phone_number)
     return render(request, 'search_user.html', {'users': users})
 
