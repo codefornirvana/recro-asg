@@ -1,0 +1,31 @@
+<!-- templates/login.html -->
+
+ {% extends 'base.html' %}
+ {% block title %} Sign in {% endblock %}
+ {% block content %}
+ <div class="row">
+
+     <form action="/login/" method="POST">
+         {% csrf_token %}
+
+         <input type="text" id="phone_number" name="phone_number" /><br />
+         <input type="password" id="password" name="password" /><br />
+         <input type="submit" value="LOGIN" /><br />
+     </form>
+
+     <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+
+         <button class="btn btn-primary mb-2">
+             <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter
+             </a>
+         </button>
+         <button class="btn btn-info mb-2">
+             <a href="{% url 'social:begin' backend='linkedin-oauth2' %}">Login with LinkedIn</a>
+         </button>
+         <button class="btn mb-2">
+             <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+         </button>
+     </div>
+ </div>
+ </div>
+ {% endblock %}

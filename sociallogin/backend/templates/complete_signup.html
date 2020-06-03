@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--    <form action="/complete_signup/" method="POST">-->
+<!--        <Label for="phone-field"  >Phone Number</Label>-->
+<!--        <input id="phone-field" /><br />-->
+<!--        <Label for="password-field"  >Password</Label>-->
+<!--        <input id="password-field" type="password" /><br />-->
+<!--        <input type="submit" value="OK" />-->
+<!--    </form>-->
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>
